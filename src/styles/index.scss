@@ -1,0 +1,513 @@
+@import "./mixin.scss";
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+$blue: #324157;
+$light-blue: #3A71A8;
+$red: #C03639;
+$pink: #E65D6E;
+$green: #30B08F;
+$tiffany: #4AB7BD;
+$yellow: #FEC171;
+
+$panGreen: #30B08F;
+
+@mixin colorBtn($color) {
+  background: $color;
+  &:hover {
+    color: $color;
+    &:before, &:after {
+      background: $color;
+    }
+  }
+}
+
+.blue-btn {
+  @include colorBtn($blue)
+}
+
+.light-blue-btn {
+  @include colorBtn($light-blue)
+}
+
+.red-btn {
+  @include colorBtn($red)
+}
+
+.pink-btn {
+  @include colorBtn($pink)
+}
+
+.green-btn {
+  @include colorBtn($green)
+}
+
+.tiffany-btn {
+  @include colorBtn($tiffany)
+}
+
+.yellow-btn {
+  @include colorBtn($yellow)
+}
+
+.pan-btn {
+  font-size: 14px;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-right: 25px;
+  transition: 600ms ease all;
+  position: relative;
+  display: inline-block;
+  &:hover {
+    background: #fff;
+    &:before, &:after {
+      width: 100%;
+      transition: 600ms ease all;
+    }
+  }
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    transition: 400ms ease all;
+  }
+  &::after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.custom-button {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fff;
+  color: #fff;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+code {
+  background: #eef1f6;
+  padding: 15px 10px;
+  margin-bottom: 20px;
+  display: block;
+  line-height: 36px;
+  a {
+    color: #337ab7;
+    cursor: pointer;
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .2s ease
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.editor-container .CodeMirror {
+  height: 100% !important;
+}
+
+.wscn-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+  &.draft {
+    background: #d0d0d0;
+  }
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.publishedTag,
+.draftTag,
+.deletedTag {
+  color: #fff;
+  background-color: $panGreen;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+.draftTag {
+  background-color: $yellow;
+}
+
+.deletedTag {
+  background-color: $red;
+}
+
+.input-label {
+  font-size: 14px;
+  color: #48576a;
+  line-height: 1;
+  padding: 11px 5px 11px 0;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.no-marginLeft {
+  .el-checkbox {
+    margin: 0 20px 15px 0;
+  }
+  .el-checkbox + .el-checkbox {
+    margin-left: 0px;
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+//refine simplemde
+.simplemde-container {
+  .editor-toolbar.fullscreen, .CodeMirror-fullscreen {
+    z-index: 1003;
+  }
+}
+
+//暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+//github-corner
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0)
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg)
+  }
+  40%,
+  80% {
+    transform: rotate(10deg)
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+  }
+}
+//
+//.el-dialog .el-dialog__body .el-form-item .el-input {
+//  width: 360px;
+//}
+//
+//.el-dialog .el-dialog__body {
+//  padding: 24px 30px;
+//}
+
+//.el-dialog .el-dialog__header {
+//  font-size: 16px;
+//  color: #333;
+//  height: 48px;
+//  line-height: 48px;
+//  padding: 0 20px;
+//  border: 1px solid #eee;
+//}
+//
+//.el-dialog .el-dialog__footer {
+//  padding-right: 30px;
+//}
+//
+//.el-dialog .el-form-item .el-textarea {
+//  width: 360px;
+//}
+//
+//.el-dialog {
+//  width: 492px;
+//}
+//
+//.el-dialog .el-form-item .avatar-uploader {
+//  display: inline-block;
+//  vertical-align: bottom;
+//  width: 90px;
+//  height: 90px;
+//  border: 1px solid #ccc;
+//  line-height: 90px;
+//  text-align: center;
+//}
+//
+//.el-dialog .el-form-item .avatar-uploader {
+//  width: 90px;
+//  height: 90px;
+//}
+//
+//.el-dialog .el-form-item .avatar-uploader-show {
+//  width: 90px;
+//  height: 90px;
+//}
+//
+//.el-dialog .el-form-item .el-upload {
+//  width: 100%;
+//  height: 100%;
+//  cursor: pointer;
+//}
+//
+//.el-dialog .el-dialog__footer {
+//  padding-top: 0;
+//}
+//
+//.el-dialog .el-form .el-form-item:last-child {
+//  margin-bottom: 0;
+//}
+//
+//.el-dialog .el-form-item .avatar-uploader-tip {
+//  display: inline-block;
+//  height: 90px;
+//  line-height: 90px;
+//  margin-left: 12px;
+//}
+
+.el-checkbox-button__inner {
+  border-left: 1px solid #bfcbd9;
+}
+
+.el-radio-button__orig-radio:checked + .el-radio-button__inner {
+  color: #fff;
+  background-color: #f44336;
+  border-color: #f44336;
+  box-shadow: -1px 0 0 0 #f44336
+}
+
+.el-pager li.active {
+  border-color: #f44336;
+  background-color: #f44336;
+  color: #fff;
+}
+
+.el-button--primary {
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.el-button--primary:focus, .el-button--primary:hover {
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.lark-body-wrap {
+  padding: 16px;
+  background-color: #f0f0f0;
+  .lark-header {
+    margin-bottom: 16px;
+    background-color: #fff;
+    padding: 16px 0 0;
+    .el-form-item .el-input {
+      width: 360px;
+    }
+  }
+}
+
+.lark-multi-item .el-form-item {
+  display: inline-block;
+  .el-select .el-input {
+    width: 180px !important;
+  }
+  .el-input {
+    width: 180px !important;
+  }
+}
+
+.el-menu--dark .el-submenu__title {
+  color: #fff;
+  font-weight: bold;
+}
+
+.el-menu--dark .el-submenu__title:hover {
+  background-color: rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+.el-menu--dark .el-submenu .el-menu {
+  background-color: rgba(0,172,200,0.3);
+  color: #fff;
+}
+
+.el-menu--dark .el-menu-item {
+  color: #fff !important;
+}
+
+.el-menu--dark .el-menu-item:hover {
+  background-color: rgba(102,205,200,0.3) !important;
+}
+
+.el-table td, .el-table th {
+  height: 35px;
+  font-size: 13px;
+}
